@@ -1,0 +1,194 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\geometry{a4paper, margin=25mm}
+
+\begin{document}
+
+% --- CAPA ---
+\begin{titlepage}
+    \begin{center}
+        % Lembre-se de renomear a imagem no Overleaf para brasao-ufersa.jpeg (sem acento)
+        \includegraphics[width=2.5cm]{brasão-ufersa.jpeg}\\[0.5cm] 
+        
+        {\large UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO}\\[0.2cm]
+        {\large Cálculo II}\\[4cm]
+        
+        {\Large \textbf{Cálculos e Beisebol}}\\[3cm]
+        
+        {\large Izadora Louyza Silva Figueiredo }\\
+        {\large Abnoan Gabriel Ferreira da Silva}\\
+        {\large Francisco Jonathan Aquino Souza}\\
+        {\large Lucas Alves Ferreira}\\
+        {\large Carlos Eduardo Reges Silva}\\
+        {\large Matheus Fernandes Melo}\\[3cm]
+    \end{center}
+
+    \begin{flushright}
+        \begin{minipage}{0.5\textwidth}
+            \begin{spacing}{1.1}
+                Trabalho acadêmico apresentado ao professor Prof. Otávio Floriano Paulino como requisito de avaliação parcial da disciplina de Cálculo II.
+            \end{spacing}
+        \end{minipage}
+    \end{flushright}
+
+    \vfill
+
+    \begin{center}
+        Pau dos Ferros - RN\\
+        2026
+    \end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% --- INÍCIO DO CONTEÚDO ---
+
+\section{Introdução}
+O beisebol, embora pareça ditado inteiramente pela habilidade atlética, é um laboratório perfeito para o estudo da física clássica e do cálculo diferencial e integral. As interações físicas do jogo são modeladas por leis complexas do movimento. Este trabalho explora três cenários práticos onde o cálculo se faz essencial: a análise de forças extremas na fração de segundo em que o taco atinge a bola, a medição do trabalho mecânico do braço de um arremessador, e a modelagem aerodinâmica para decisões táticas defensivas no campo.
+
+\section{Desenvolvimento Detalhado dos Cálculos}
+
+\subsection{1. A Colisão da Bola e o Taco (Momento e Impulso)}
+A interação entre o taco e a bola é extremamente rápida ($\Delta t = 0{,}001\text{ s}$). Para encontrar a força, relacionamos o impulso com a variação da quantidade de movimento (momento linear).
+
+\subsubsection*{(a) Demonstração do Teorema do Impulso}
+Sabemos que o momento é $p = mv$. A Segunda Lei de Newton estabelece que a força resultante é a taxa de variação do momento no tempo:
+\begin{align*}
+    F(t) &= \frac{dp}{dt}
+\end{align*}
+Multiplicando ambos os lados por $dt$ (separação de variáveis) e integrando do instante inicial $t_0$ ao instante final $t_1$:
+\begin{align*}
+    \int_{t_0}^{t_1} F(t) \, dt &= \int_{p(t_0)}^{p(t_1)} dp
+\end{align*}
+A integral de $dp$ é simplesmente $p$. Avaliando nos limites de integração pelo Teorema Fundamental do Cálculo:
+\begin{align*}
+    \int_{t_0}^{t_1} F(t) \, dt &= [p]_{p(t_0)}^{p(t_1)} = p(t_1) - p(t_0)
+\end{align*}
+Isso demonstra que a Integral da Força (Impulso) equivale à variação do momento.
+
+\subsubsection*{(b) Cálculos Práticos e Conversões de Unidades}
+No Sistema Imperial, precisamos que tudo esteja em pés (ft), segundos (s), libras-força (lb) e slugs (massa).
+
+\paragraph{Passo 1: Conversão das Velocidades}
+Para converter milhas por hora (mi/h) para pés por segundo (pés/s), multiplicamos por $5280$ (pés em uma milha) e dividimos por $3600$ (segundos em uma hora):
+\begin{align*}
+    v_0 &= -90 \cdot \left(\frac{5280}{3600}\right) = -90 \cdot 1{,}4667 = -132\text{ pés/s} \\
+    v_1 &= 110 \cdot \left(\frac{5280}{3600}\right) = 110 \cdot 1{,}4667 = 161{,}33\text{ pés/s} 
+\end{align*}
+
+\paragraph{Passo 2: Conversão da Massa}
+A bola pesa $5\text{ oz}$. Como $16\text{ oz} = 1\text{ lb}$, o peso é $\frac{5}{16}\text{ lb}$. Para achar a massa em slugs, dividimos pela gravidade ($g = 32\text{ pés/s}^2$):
+\begin{align*}
+    m &= \frac{5/16}{32} = \frac{5}{16 \cdot 32} = \frac{5}{512} \approx 0{,}0097656\text{ slugs}
+\end{align*}
+
+\paragraph{Passo 3: Variação do Momento ($\Delta p$) e Força Média}
+\begin{align*}
+    \Delta p &= m(v_1 - v_0) \\
+    \Delta p &= 0{,}0097656 \cdot [161{,}33 - (-132)] \\
+    \Delta p &= 0{,}0097656 \cdot 293{,}33 \approx 2{,}864\text{ slug-pés/s}
+\end{align*}
+A força média é o Impulso dividido pelo tempo ($0{,}001\text{ s}$):
+\begin{align*}
+    F_{\text{media}} &= \frac{\Delta p}{\Delta t} = \frac{2{,}864}{0{,}001} = 2864\text{ libras}
+\end{align*}
+
+\subsection{2. O Trabalho do Arremessador}
+
+\subsubsection*{(a) Expansão da Regra da Cadeia}
+A aceleração é $a = \frac{dv}{dt}$. Usando a regra da cadeia, introduzimos a posição $s$:
+\begin{align*}
+    a &= \frac{dv}{ds} \cdot \frac{ds}{dt}
+\end{align*}
+Como $\frac{ds}{dt}$ é a definição de velocidade ($v$), substituímos:
+\begin{align*}
+    a &= v \cdot \frac{dv}{ds}
+\end{align*}
+Substituindo na Segunda Lei de Newton ($F = ma$):
+\begin{align*}
+    F(s) &= m \left(v \frac{dv}{ds}\right)
+\end{align*}
+O Trabalho é a integral da Força em relação ao deslocamento $ds$:
+\begin{align*}
+    W &= \int_{s_0}^{s_1} F(s) \, ds = \int_{s_0}^{s_1} m v \frac{dv}{ds} \, ds
+\end{align*}
+Ao cancelar os diferenciais $ds$, mudamos os limites de integração para velocidade:
+\begin{align*}
+    W &= \int_{v_0}^{v_1} mv \, dv = m \left[ \frac{v^2}{2} \right]_{v_0}^{v_1} = \frac{1}{2}mv_1^2 - \frac{1}{2}mv_0^2
+\end{align*}
+
+\subsubsection*{(b) Execução do Cálculo de Energia}
+Com $v_0 = 0$ (repouso) e $v_1 = 132\text{ pés/s}$:
+\begin{align*}
+    W &= \frac{1}{2} \cdot \left(\frac{5}{512}\right) \cdot (132)^2 \\
+    W &= \frac{5}{1024} \cdot 17424 \\
+    W &= 5 \cdot 17{,}0156 \approx 85{,}08\text{ libras-pés}
+\end{align*}
+
+\subsection{3. Aerodinâmica e Estratégia de Defesa (Otimização)}
+
+\subsubsection*{(a) Resolvendo a Equação Diferencial e o Tempo Direto}
+Temos a EDO separável da resistência do ar:
+\begin{align*}
+    \frac{dv}{dt} &= -\frac{v}{10} \\
+    \frac{dv}{v} &= -\frac{dt}{10}
+\end{align*}
+Integrando ambos os lados:
+\begin{align*}
+    \ln|v| &= -\frac{t}{10} + C \implies v(t) = e^{-t/10 + C} = C_1 e^{-t/10}
+\end{align*}
+Como no instante $t=0$, $v(0) = 100\text{ pés/s}$, logo $C_1 = 100$.
+A posição $s(t)$ é a integral de $v(t)$:
+\begin{align*}
+    s(t) &= \int 100 e^{-t/10} \, dt = -1000 e^{-t/10} + C_2
+\end{align*}
+Como $s(0) = 0$, temos $0 = -1000(1) + C_2 \implies C_2 = 1000$. A equação da posição fica:
+\begin{align*}
+    s(t) &= 1000(1 - e^{-t/10})
+\end{align*}
+Para achar o tempo $t$ quando $s = 280\text{ pés}$:
+\begin{align*}
+    280 &= 1000(1 - e^{-t/10}) \\
+    0{,}28 &= 1 - e^{-t/10} \\
+    e^{-t/10} &= 0{,}72 \\
+    -\frac{t}{10} &= \ln(0{,}72) \implies t = -10 \cdot (-0{,}3285) \approx 3{,}285\text{ s}
+\end{align*}
+
+\subsubsection*{(b) Derivada e Otimização para o Revezamento}
+A função do tempo total isolando $t$ na fórmula da posição para dois trechos é:
+\begin{align*}
+    T(x) &= -10 \ln\left(1 - \frac{x}{1000}\right) + 0{,}5 - 10 \ln\left(1 - \frac{280-x}{10v_i}\right)
+\end{align*}
+Para minimizar $T(x)$, calculamos a derivada $T'(x)$ usando a regra da cadeia ($\frac{d}{dx} \ln(u) = \frac{u'}{u}$):
+\begin{align*}
+    T'(x) &= -10 \left( \frac{-1/1000}{1 - x/1000} \right) - 10 \left( \frac{1/(10v_i)}{1 - \frac{280-x}{10v_i}} \right) \\
+    T'(x) &= \frac{10}{1000 - x} - \frac{10}{10v_i - 280 + x}
+\end{align*}
+Igualando a zero para encontrar o ponto crítico ($T'(x) = 0$):
+\begin{align*}
+    \frac{10}{1000 - x} &= \frac{10}{10v_i - 280 + x} \\
+    1000 - x &= 10v_i - 280 + x \\
+    2x &= 1280 - 10v_i \\
+    x &= 640 - 5v_i
+\end{align*}
+Esta é a posição exata em função da velocidade de retransmissão ($v_i$).
+
+\subsubsection*{(c) Velocidade Limiar de Empate}
+Substituindo $x = 640 - 5v_i$ na função $T(x)$ e igualando ao tempo direto ($3{,}285\text{ s}$), obtemos o limiar. Simplificando a álgebra, a solução numérica atinge a raiz de:
+\begin{align*}
+    v_i \approx 112{,}8\text{ pés/s}
+\end{align*}
+Acima dessa velocidade de passe, o revezamento é o trajeto temporal mais curto.
+
+\section{Conclusão}
+A aplicação do cálculo no beisebol transcende a teoria de sala de aula e se torna uma ferramenta de análise de alta performance desportiva. Através de integrais, conseguimos dimensionar de forma precisa as forças imensas envolvidas na colisão e a energia dissipada por um atleta. Mais fascinante ainda é o uso de equações diferenciais e derivadas para otimizar decisões táticas em campo: o cálculo provou numericamente que a resistência do ar dita um limiar estratégico exato ($\approx 112{,}8\text{ pés/s}$) para a viabilidade de um passe de revezamento. Tais demonstrações confirmam o poder da modelagem matemática na resolução e otimização de eventos do mundo real.
+
+\end{document}
